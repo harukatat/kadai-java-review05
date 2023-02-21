@@ -14,7 +14,7 @@ public class Review05 {
     public static void main(String[] args) {
         // 3. データベース接続と結果取得のための変数宣言
         Connection con = null;
-        PreparedStatement pstmt = null; // ← 修正
+        PreparedStatement pstmt = null; //
         ResultSet rs = null;
 
         try {
@@ -27,26 +27,26 @@ public class Review05 {
                     "Hoc20102010"
                 );
             // 4. DBとやりとりする窓口（Statementオブジェクト）の作成
-            String sql = "SELECT * FROM person WHERE id = ?";    // ← 修正
-            pstmt = con.prepareStatement(sql);  // ← 修正
+            String sql = "SELECT * FROM person WHERE id = ?";
+            pstmt = con.prepareStatement(sql);
 
 
          // 5, 6. Select文の実行と結果を格納／代入
-            System.out.print("検索キーワードを入力してください > ");    // ← 追記
-            String input = keyIn();    // ← 追記
+            System.out.print("検索キーワードを入力してください > ");
+            String input = keyIn();
 
          //PreparedStatementオブジェクトの？に値を数値としてセット
             int num = Integer.parseInt(input);
             pstmt.setInt (1,num);
 
 
-            rs = pstmt.executeQuery();// ← 修正
+            rs = pstmt.executeQuery();
 
          // 7. 結果を表示する
             while (rs.next()) {
                 // Name列の値を取得
                 String name = rs.getString("Name");
-                // age列の値を取得 ← 追記
+                // age列の値を取得
                 int age = rs.getInt("age");
 
                 // 取得した値を表示
@@ -70,9 +70,9 @@ public class Review05 {
                     e.printStackTrace();
                 }
             }
-            if (pstmt != null) {    // ← 修正
+            if (pstmt != null) {    //
                 try {
-                    pstmt.close();    // ← 修正
+                    pstmt.close();    //
                 } catch (SQLException e) {
                     System.err.println("Statementを閉じるときにエラーが発生しました。");
                     e.printStackTrace();
@@ -89,7 +89,7 @@ public class Review05 {
         }
     }
     /*
-     * キーボードから入力された値をStringで返す 引数：なし 戻り値：入力された文字列    // ← 追記
+     * キーボードから入力された値をStringで返す 引数：なし 戻り値：入力された文字列    //
      */
     private static String keyIn() {
         String line = null;
